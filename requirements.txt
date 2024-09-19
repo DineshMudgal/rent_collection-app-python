@@ -50,3 +50,7 @@ rent-management-app/ │
 ├── app.py # Main Flask application logic 
 ├── database.db # SQLite database 
 ├── README.md # Documentation for the app
+
+## Support
+
+This project was developed with support from **ChatGPT**, an AI-powered assistant by OpenAI, to help implement features, refine the code, and ensure a smooth user experience.
