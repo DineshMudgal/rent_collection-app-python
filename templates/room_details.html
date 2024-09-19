@@ -9,14 +9,30 @@
 <body>
     <div class="container">
         <h1 class="center-align">Room {{ room['room_number'] }} Details</h1>
-        <h5>Rent: {{ room['rent_amount'] }}</h5>
+
+        <!-- Rent and Balance Information -->
+        <h5>Rent Amount: {{ room['rent_amount'] }}</h5>
+        <h5>Balance: {{ balance }}</h5>
+
+        <!-- Electricity Meter Readings -->
+        <h5>Electricity Meter Readings:</h5>
+        <ul class="collection">
+            <li class="collection-item">Previous Meter Reading: {{ previous_reading }}</li>
+            <li class="collection-item">Current Meter Reading: {{ current_reading }}</li>
+            <li class="collection-item">Electricity Bill: {{ electricity_bill }}</li>
+        </ul>
+
+        <!-- Tenant List -->
         <h5>Tenants:</h5>
         <ul class="collection">
             {% for tenant in tenants %}
             <li class="collection-item">{{ tenant['tenant_name'] }}</li>
             {% endfor %}
         </ul>
+
+        <!-- Actions -->
         <a href="{{ url_for('add_tenant') }}?room_id={{ room['room_id'] }}" class="btn waves-effect waves-light green">Add Tenant</a>
+        <a href="{{ url_for('update_reading', room_id=room['room_id']) }}" class="btn waves-effect waves-light blue">Update Reading</a>
     </div>
 
     <!-- Import Materialize JS from CDN -->

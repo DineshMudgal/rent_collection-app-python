@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Meter Reading</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Update Meter Reading for Room {{ room['room_number'] }}</h1>
+        <form method="POST">
+            <div class="input-field">
+                <label for="current_meter_reading">Current Meter Reading</label>
+                <input type="number" id="current_meter_reading" name="current_meter_reading" required>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Update</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

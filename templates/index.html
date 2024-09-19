@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Rent Management</title>
-    <!-- Import Materialize CSS from CDN -->
+    <title>Rent Management Dashboard</title>
+    <!-- Import Materialize CSS for modern styling -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -17,6 +18,10 @@
                 <tr>
                     <th>Room Number</th>
                     <th>Rent Amount</th>
+                    <th>Last Reading</th>
+                    <th>Current Reading</th>
+                    <th>Electricity Bill</th>
+                    <th>Balance</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -25,18 +30,62 @@
                 <tr>
                     <td>{{ room['room_number'] }}</td>
                     <td>{{ room['rent_amount'] }}</td>
+                    <td>{{ room['previous_meter_reading'] }}</td>
+                    <td>{{ room['current_meter_reading'] }}</td>
+                    <td>{{ (room['current_meter_reading'] - room['previous_meter_reading']) * 10 }}</td>
+                    <td>{{ room['balance'] }}</td>
                     <td>
                         <a href="{{ url_for('room_details', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light">Details</a>
                         <a href="{{ url_for('add_tenant') }}?room_id={{ room['room_id'] }}" class="btn-small waves-effect waves-light green">Add Tenant</a>
-                        <a href="{{ url_for('remove_room', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light red">Remove</a>
+                        <a href="{{ url_for('update_reading', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light blue">Update Reading</a>
+                        <a href="{{ url_for('pay_rent', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light orange">Pay Rent</a>
                     </td>
                 </tr>
+                <!-- Expandable section for payment history -->
+                <tr>
+                    <td colspan="7">
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header">
+                                    <!-- <i class="material-icons">attach_money</i> Changed icon to "attach_money" for payments -->
+                                    <span>Show Payment History</span>
+                                </div>
+                                <div class="collapsible-body">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Payment Date</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for payment in room_payment_history[room['room_id']] %}
+                                            <tr>
+                                                <td>{{ payment['payment_date'] }}</td>
+                                                <td>{{ payment['payment_amount'] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                
                 {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <!-- Import Materialize JS from CDN -->
+    <!-- Import Materialize JS and initialize collapsible -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            M.Collapsible.init(elems);
+        });
+    </script>
 </body>
 </html>
+

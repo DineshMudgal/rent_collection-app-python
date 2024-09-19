@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Rent</title>
+    <!-- Import Materialize CSS from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Pay Rent for Room {{ room['room_number'] }}</h1>
+        <form method="POST">
+            <div class="input-field">
+                <label for="payment_amount">Payment Amount</label>
+                <input type="number" id="payment_amount" name="payment_amount" required>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Pay</button>
+        </form>
+    </div>
+
+    <!-- Import Materialize JS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
