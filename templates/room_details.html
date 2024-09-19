@@ -31,7 +31,7 @@
         </ul>
 
         <!-- Actions -->
-        <a href="{{ url_for('add_tenant') }}?room_id={{ room['room_id'] }}" class="btn waves-effect waves-light green">Add Tenant</a>
+        <a href="{{ url_for('add_tenant', room_id=room['room_id']) }}" class="btn waves-effect waves-light green">Add Tenant</a>
         <a href="{{ url_for('update_reading', room_id=room['room_id']) }}" class="btn waves-effect waves-light blue">Update Reading</a>
     </div>
 

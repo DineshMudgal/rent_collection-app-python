@@ -75,9 +75,9 @@ def add_room():
         return redirect(url_for('home'))
     return render_template('add_room.html')
 
-@app.route('/add_tenant', methods=['GET', 'POST'])
-def add_tenant():
-    room_id = request.args.get('room_id')  # Get the room_id from the query string if available
+@app.route('/add_tenant/<int:room_id>', methods=['GET', 'POST'])
+def add_tenant(room_id):
+    # room_id = request.args.get('room_id')  # Get the room_id from the query string if available
     conn = connect_db()
     rooms = conn.execute('SELECT * FROM rooms WHERE is_active=1').fetchall()
     conn.close()
@@ -90,7 +90,7 @@ def add_tenant():
                      (tenant_name, room_id))
         conn.commit()
         conn.close()
-        return redirect(url_for('home'))
+        return redirect(url_for('room_details', room_id=room_id))
     
     return render_template('add_tenant.html', rooms=rooms, selected_room_id=room_id)
 

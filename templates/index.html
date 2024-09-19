@@ -36,7 +36,7 @@
                     <td>{{ room['balance'] }}</td>
                     <td>
                         <a href="{{ url_for('room_details', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light">Details</a>
-                        <a href="{{ url_for('add_tenant') }}?room_id={{ room['room_id'] }}" class="btn-small waves-effect waves-light green">Add Tenant</a>
+                        <a href="{{ url_for('add_tenant', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light green">Add Tenant</a>
                         <a href="{{ url_for('update_reading', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light blue">Update Reading</a>
                         <a href="{{ url_for('pay_rent', room_id=room['room_id']) }}" class="btn-small waves-effect waves-light orange">Pay Rent</a>
                     </td>

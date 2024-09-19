@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "room",
+            "database": "${workspaceFolder:rent_collection-app-python}/rent_management.db"
+        }
+    ]
+}

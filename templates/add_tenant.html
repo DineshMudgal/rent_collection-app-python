@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1 class="center-align">Add Tenant</h1>
-        <form method="POST" action="{{ url_for('add_tenant') }}">
+        <form method="POST" action="{{ url_for('add_tenant', room_id=selected_room_id) }}">
             <div class="input-field">
                 <label for="tenant_name">Tenant Name</label>
                 <input type="text" id="tenant_name" name="tenant_name" required>
