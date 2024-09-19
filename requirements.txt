@@ -1,0 +1,52 @@
+# Rent Management App
+
+This is a simple Rent Management web application designed to help property owners manage rent collection, tenant information, electricity bill calculation, and room status. The app uses a Python backend with SQLite for the database and an HTML frontend styled with Materialize CSS for a modern, responsive design.
+
+## Features
+
+- **Room Management**: Add, remove, enable/disable rooms.
+- **Tenant Management**: Add one or more tenants to rooms.
+- **Electricity Bill Calculation**: Calculate the electricity bill based on meter readings and split the cost among tenants if required.
+- **Rent Management**: Collect rent on a monthly basis and display the balance.
+- **Responsive UI**: Designed using Materialize CSS for a modern and mobile-friendly interface.
+  
+## Technologies Used
+
+- **Backend**: Python (Flask)
+- **Database**: SQLite
+- **Frontend**: HTML, Materialize CSS for styling
+- **Templating**: Jinja2 (used in Flask for rendering HTML)
+
+## Installation
+
+1. Clone this repository:
+    ```bash
+    git clone <repository-url>
+    cd rent-management-app
+    ```
+
+2. Install required dependencies:
+    ```bash
+    pip install Flask
+    ```
+
+3. Run the application:
+    ```bash
+    python app.py
+    ```
+
+4. Visit `http://127.0.0.1:5000/` in your browser to access the application.
+
+## Folder Structure
+
+rent-management-app/ │ 
+├── templates/ │ 
+├── index.html # Main page displaying all rooms │ 
+├── add_room.html # Form to add a new room │
+├── add_tenant.html # Form to add a tenant to a room │ 
+├── room_details.html # Displays details of a specific room │ 
+├── update_reading.html # Form to update electricity meter readings │ 
+├── static/ # For CSS, JS, and image assets │ 
+├── app.py # Main Flask application logic 
+├── database.db # SQLite database 
+├── README.md # Documentation for the app
